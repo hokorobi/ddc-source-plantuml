@@ -4,6 +4,7 @@ import {
 } from "https://deno.land/x/ddc_vim@v3.4.0/types.ts";
 import {
   Denops,
+  vars,
 } from "https://deno.land/x/ddc_vim@v3.4.0/deps.ts";
 
 type Params = Record<never, never>;
@@ -12,10 +13,15 @@ export class Source extends BaseSource<Params> {
   _cache: Item[];
 
   override async onInit(args: {
-    denops: Denops;
+    denops: Denops,
   }): Promise<void> {
     const p = Deno.run({
-      cmd: ["java", "-jar", "C:/ols/Graphic/plantuml.jar", "-language"],
+      cmd: [
+        "java",
+        "-jar",
+        await vars.g.get(args.denops, "ddc_source_plantuml_cmd", "plantuml.jar"),
+        "-language"
+      ],
       stdout: "piped",
       stderr: "piped",
       stdin: "null",
@@ -30,7 +36,7 @@ export class Source extends BaseSource<Params> {
   }
 
   override async gather(args: {
-    denops: Denops;
+    denops: Denops,
   }): Promise<Item[]> {
     return this._cache;
   }
