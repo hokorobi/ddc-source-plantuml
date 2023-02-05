@@ -1,0 +1,51 @@
+*ddc-source-plantuml.txt*	PlantUML source for ddc.vim
+
+Author: hokorobi <hokorobi.hokorobi at gmail.com>
+License: MIT license
+
+CONTENTS					*ddc-source-plantuml-contents*
+
+Introduction		|ddc-source-plantuml-introduction|
+Install			|ddc-source-plantuml-install|
+Examples		|ddc-source-plantuml-examples|
+Variables		|ddc-source-plantuml-variables|
+
+
+==============================================================================
+INTRODUCTION				*ddc-source-plantuml-introduction*
+
+This source collects "plantuml.jar -language" output.
+
+
+==============================================================================
+INSTALL						*ddc-source-plantuml-install*
+
+Please install both "ddc.vim" and "denops.vim" and "plantuml.jar".
+
+https://github.com/Shougo/ddc.vim
+https://github.com/vim-denops/denops.vim
+https://github.com/plantuml/plantuml/releases
+
+
+==============================================================================
+EXAMPLES					*ddc-source-plantuml-examples*
+>
+	let g:ddc_source_plantuml_cmd = 'C:/path/to/plantuml.jar'
+	call ddc#custom#patch_global('sources', ['plantuml'])
+	
+	call ddc#custom#patch_global('sourceOptions', #{
+	      \   around: #{ mark: 'U' },
+	      \ })
+<
+
+==============================================================================
+VARIABLES					*ddc-source-plantuml-variables*
+
+						*g:ddc_source_plantuml_cmd*
+g:ddc_source_plantuml_cmd	(string)
+	path to plantuml.jar.
+
+	Default: ""
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:noet:
