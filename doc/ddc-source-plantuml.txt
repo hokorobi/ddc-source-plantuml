@@ -34,7 +34,7 @@ EXAMPLES					*ddc-source-plantuml-examples*
 	call ddc#custom#patch_global('sources', ['plantuml'])
 	
 	call ddc#custom#patch_global('sourceOptions', #{
-	      \   around: #{ mark: 'U' },
+	      \   plantuml: #{ mark: 'U' },
 	      \ })
 <
 
