@@ -10,7 +10,7 @@ import {
 type Params = Record<never, never>;
 
 export class Source extends BaseSource<Params> {
-  _cache: Item[];
+  _cache: Item[] = [];
 
   override async onInit(args: {
     denops: Denops,
@@ -35,10 +35,8 @@ export class Source extends BaseSource<Params> {
       .map((word: string) => ({ word }));
   }
 
-  override async gather(args: {
-    denops: Denops,
-  }): Promise<Item[]> {
-    return this._cache;
+  override gather(): Promise<Item[]> {
+    return Promise.resolve(this._cache);
   }
 
   override params(): Params {
