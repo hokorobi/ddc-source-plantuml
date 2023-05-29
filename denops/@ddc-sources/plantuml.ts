@@ -15,20 +15,17 @@ export class Source extends BaseSource<Params> {
   override async onInit(args: {
     denops: Denops,
   }): Promise<void> {
-    const p = Deno.run({
-      cmd: [
-        "java",
-        "-jar",
-        await vars.g.get(args.denops, "ddc_source_plantuml_cmd", "plantuml.jar"),
-        "-language"
-      ],
+    const cmdArgs = [
+      "-jar",
+      await vars.g.get(args.denops, "ddc_source_plantuml_cmd", "plantuml.jar"),
+      "-language"
+    ]
+    const p = new Deno.Command("java", {
+      args: cmdArgs,
       stdout: "piped",
-      stderr: "piped",
-      stdin: "null",
-    });
-    await p.status();
-
-    const lines = new TextDecoder().decode(await p.output()).split(/\r?\n/);
+    }).spawn();
+    const {stdout} = await p.output();
+    const lines = new TextDecoder().decode(stdout).split(/\r?\n/);
     this._cache = [...new Set(lines)]
       .filter((line) => line.length != 0)
       .filter((word) => !word.startsWith(";"))
