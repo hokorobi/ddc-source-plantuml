@@ -1,0 +1,6 @@
+{
+  "lock": false,
+  "tasks": {
+    "check": "deno check --unstable denops/@ddc-sources/plantuml.ts"
+  }
+}
