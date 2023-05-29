@@ -17,13 +17,7 @@ defaults:
 
 jobs:
   check:
-    strategy:
-      matrix:
-        runner:
-          - ubuntu-latest
-        version:
-          - "1.x"
-    runs-on: ${{ matrix.runner }}
+    runs-on: ubuntu-latest
     steps:
       - run: git config --global core.autocrlf false
         if: runner.os == 'Windows'
