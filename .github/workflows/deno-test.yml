@@ -8,7 +8,7 @@ on:
       - master
     paths:
       - "**/*.ts"
-      - ".github/workflows/test.yml"
+      - ".github/workflows/deno-test.yml"
   workflow_dispatch:
 
 defaults:
