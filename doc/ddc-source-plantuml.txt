@@ -20,7 +20,7 @@ This source collects "plantuml.jar -language" output.
 ==============================================================================
 INSTALL						*ddc-source-plantuml-install*
 
-Please install both "ddc.vim" and "denops.vim" and "plantuml.jar".
+Please install "ddc.vim", "denops.vim" and "plantuml.jar".
 
 https://github.com/Shougo/ddc.vim
 https://github.com/vim-denops/denops.vim
@@ -39,7 +39,7 @@ EXAMPLES					*ddc-source-plantuml-examples*
 <
 
 ==============================================================================
-VARIABLES					*ddc-source-plantuml-variables*
+VARIABLES				*ddc-source-plantuml-variables*
 
 						*g:ddc_source_plantuml_cmd*
 g:ddc_source_plantuml_cmd	(string)
